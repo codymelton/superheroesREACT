@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Good is nice :-)</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Here is the CSS link -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h3>Hello from the good guys!</h3>
+    </div>
+  </div>
+
+<div class = "container">
+  <div id="heropannel" class = "panel-group">
+    <div v-for="hero in heroes" class = "panel panel-default hero-panel">
+      <h3>{{hero.name}}</h3>
+      <img class="hero-image" :src="hero.img"/>
+      <ul>
+        <li>{{hero.universe}}</li>
+        <li>{{hero.rank}}</li>
+        <li>{{hero.superPower}}</li>
+      </ul>
+      <button type="button" class="btn btn-warning" v-on:click="deleteHero(hero._id)">Delete</button>
+    </div>
+      <form class="form" v-on:submit="submitHero">
+        <div class="form-group">
+          <label> Hero Name: </label>
+          <input type="text" class="form-control" placeholder="enter hero name" v-model="newName">
+          <label> Hero Powers: </label>
+          <input type="text" class="form-control" placeholder="enter hero powers" v-model="newSuperpower">
+          <label> Hero's universe: </label>
+          <input type="text" class="form-control" placeholder="enter hero's universe" v-model="newUniverse">
+          <!--<label> Is this hero evil? </label>-->
+          <label> Hero's Rank: </label>
+          <input type="text" class="form-control" placeholder="enter hero rank" v-model="newRank">
+          <label> Image: </label>
+          <input type="text" class="form-control" placeholder="image link" v-model="newImg">
+        </div>
+        <button class="btn btn-success" type="submit" name="button">submit</button>
+      </form>
+  </div>
+</div>
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue"></script> <!-- Link to Vue.js -->
+    <script src="hero.js"></script> <!-- Here is the link to my js -->
+  </body>
+</html>
