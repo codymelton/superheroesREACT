@@ -14,28 +14,6 @@ mongoose.connect("mongodb://localhost/superheroes");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Tells express where client side (static) code
-//is going to live in the public folder.
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-//Goes to index when goes to main /
-app.get('/', function(req, res){
-  res.render('index')
-});
-
-app.get('/heroes', function(req, res){
-  res.render('good')
-});
-
-app.get('/villians', function(req, res){
-  res.render('bad')
-});
-
-// app.METHOD('URL LOCATION', function(req, res))
-
-
 // Returns all villains from the DB
 app.get('/api/villains', function(req,res){
   Villain.find(function(err, data){
@@ -62,8 +40,6 @@ app.post('/api/villains', function(req,res){
       }
     });
 });
-
-
 
 //Gets from villain DB
 app.get('/api/villains/:villain_id', function(req,res){
@@ -107,9 +83,13 @@ app.put('/api/villains/:villain_id', function(req,res) {
 //use the exported routes and use the new file to get the routes.
 app.use('/api/superheroes', superheroRoutes)
 
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client/public/index.html'));
+});
+
 //Server start happens last
-var server = app.listen(3000, function(){
-  console.log("This server is ready on PORT 3000");
+var server = app.listen(3001, function(){
+  console.log("This server is ready on PORT 3001");
 });
 
 module.exports = app;

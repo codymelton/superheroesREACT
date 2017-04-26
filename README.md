@@ -1,27 +1,13 @@
-It's nice to update our .gitignore before our first commit.
+Mongoose schema is found in models/.
 
-had to run npm init to make a package.json => every node proj has one of these
+Everything in `client` is a react application.  We can start the react code base
+by cd into `client` and running `npm start`.
 
-had to install express so we can use it as our dev server
+Everything outside of client is our node-specific app - it only manages DB and
+API endpoints.  We can startup this project with `nodemon` or `node server`
 
-create an endpoint /test to handle a GET request...
+Each app has its own node-modules and package.json.
 
-
-We defined a mongoose schema in the file models/superhero
-A schema is like a blueprint, it defines what all future heroes will
-look like.  It will be a constructor function we will use to actually
-make new superheroes.
-
-need to make anything that accesses the backend database have /api like in the server.js example.
-
-Ternary Statement format
-var number = 100;
-
-if (number>50){
-  console.log("I am greater than 50")
-} else{
-  console.log("I am not greater than 50")
-};
-
-//THIS WAY
-number > 50 ? console.log("I am greater than 50") : console.log("I am not greater than 50");
+Creating an application to blend the start of both apps through one commands...
+to start both at once, run `npm run dev` which is created in our node
+package.json.
