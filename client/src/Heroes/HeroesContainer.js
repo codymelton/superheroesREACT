@@ -32,9 +32,6 @@ class HeroesContainer extends Component {
             ? <HeroList heroes={this.state.heroes} />
             : undefined}
         </div>
-        <p className="">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
