@@ -8,12 +8,12 @@ import HeroesContainer from './Heroes/HeroesContainer';
 import PostHeroContainer from './Heroes/PostHeroContainer';
 
 ReactDOM.render(
-<Router history={browserHistory}>
-  <Route path="/" compontent={App}>
-    <IndexRoute component={Home} />
-    <Route path="/heroes" component={HeroesContainer} />
-    <Route path="/heroes/post" component={PostHeroContainer} />
-  </Route>
-</Router>,
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="/heroes" component={HeroesContainer}/>
+      <Route path="/post" component={PostHeroContainer}/>
+    </Route>
+  </Router>,
   document.getElementById('root')
 );
