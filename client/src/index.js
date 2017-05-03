@@ -12,7 +12,7 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/heroes" component={HeroesContainer}/>
-      <Route path="/post" component={PostHeroContainer}/>
+      <Route path="/heroes/post" component={PostHeroContainer}/>
     </Route>
   </Router>,
   document.getElementById('root')
