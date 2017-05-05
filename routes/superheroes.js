@@ -57,7 +57,7 @@ Router.route('/multiplesupers')
         if (err) {
           res.send(err);
         } else {
-          res.json({message: "Super hero was 💩🛢'd"})
+          res.json({message: "Super hero was removed"})
         }
       });
     })

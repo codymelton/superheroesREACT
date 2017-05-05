@@ -10,8 +10,9 @@ class PostHeroContainer extends Component {
     superpower: undefined,
     evil: undefined,
     rank: undefined,
-    image: undefined,
+    img: undefined,
   }
+
 
   handleSubmit = this.handleSubmit.bind(this) //binds the handleSubmit
 
@@ -25,9 +26,9 @@ class PostHeroContainer extends Component {
       superpower: this.state.superpower,
       evil: this.state.evil,
       rank: this.state.rank,
-      image: this.state.image,
+      img: this.state.img,
     }
-    
+    console.log("Pre ajax", hero);
     $.ajax({
       url: "/api/superheroes",
       method: "POST",
@@ -58,8 +59,8 @@ class PostHeroContainer extends Component {
     rank: event.target.value
   })
 
-  updateImage=(event) => this.setState({
-    image: event.target.value
+  updateImg=(event) => this.setState({
+    img: event.target.value
   })
 
   render() {
@@ -71,7 +72,7 @@ class PostHeroContainer extends Component {
                       updateSuperPower={this.updateSuperPower}
                       updateEvil={this.updateEvil}
                       updateRank={this.updateRank}
-                      updateImage={this.updateImage}/>
+                      updateImg={this.updateImg}/>
       </div>
     )
   }

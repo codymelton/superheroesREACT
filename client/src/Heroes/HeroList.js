@@ -13,6 +13,7 @@ const HeroList = props => (
           <li> Super Powers: {item.superPower} </li>
         </ul>
         <Link className="btn btn-warning" to={`/heroes/edit/${item._id}`}>Edit</Link>
+        <Link className="btn btn-danger" to={`/heroes/edit/${item._id}`}>Delete</Link>
       </div>
     ))}
   </div>
