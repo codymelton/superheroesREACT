@@ -9,7 +9,8 @@ import HeroList from './HeroList';
 
 class HeroesContainer extends Component {
   state = {
-    heroes: undefined
+    heroes: undefined,
+    text: undefined,
   };
 
   componentDidMount = () => this.loadHeroes();
@@ -24,12 +25,28 @@ class HeroesContainer extends Component {
     });
   }
 
+  updateText = (event) => this.setState({ text: event.target.value })
+
+  submitNote = this.submitNote.bind(this);
+
+  submitNote(event, _id){
+    event.preventDefault();
+    let note = { content: this.state.text }
+    $.ajax({
+      url: `/api/superheroes/note/${_id}`,
+      method: "POST",
+      data: note
+    }).done((response)=> this.loadHeroes())
+  }
+
   render() {
     return (
       <div className="">
         <div className="">
           {this.state.heroes
-            ? <HeroList heroes={this.state.heroes} />
+            ? <HeroList heroes={this.state.heroes}
+                        updateText={this.updateText}
+                        submitNote={this.submitNote} />
             : undefined}
         </div>
       </div>

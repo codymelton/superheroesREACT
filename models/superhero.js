@@ -6,7 +6,8 @@ var SuperheroSchema = new mongoose.Schema({
   universe:     String,
   evil:         Boolean,
   rank:         Number,
-  img:          String
+  img:          String,
+  notes:        [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }]
 });
 
 SuperheroSchema.methods.loadData = function(data){
