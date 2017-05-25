@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router';
+import NotesList from './NotesList'
 
 const HeroList = props => (
   <div>
@@ -16,11 +17,21 @@ const HeroList = props => (
         <Link className="btn btn-warning" to={`/heroes/edit/${item._id}`}>Edit</Link>
         <Link className="btn btn-danger" to={`/heroes/edit/${item._id}`}>Delete</Link>
 
+        <div>
+          <NotesList notes={item.notes} />
+        </div>
+
         <form className="form-inline">
           <div className="form-group">
             <label> Add note: </label>
-            <input type="text" className="form-control" onChange={(event) => props.updateText(event)}/>
-            <button type="button" className="btn btn-primary" onClick={(event) => props.submitNote(event, item._id)}>Add</button>
+            <input type="text"
+                   required="true"
+                   value={props.text || ""}
+                   className="form-control"
+                   onChange={(event) => props.updateText(event)}/>
+            <button type="button"
+                    className="btn btn-primary"
+                    onClick={(event) => props.submitNote(event, item._id)}>Add</button>
           </div>
         </form>
       </div>

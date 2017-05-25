@@ -13,6 +13,9 @@ class HeroesContainer extends Component {
     text: undefined,
   };
 
+// BIND all component
+  submitNote = this.submitNote.bind(this);
+  loadHeroes = this.loadHeroes.bind(this);
   componentDidMount = () => this.loadHeroes();
 
   loadHeroes() {
@@ -27,16 +30,23 @@ class HeroesContainer extends Component {
 
   updateText = (event) => this.setState({ text: event.target.value })
 
-  submitNote = this.submitNote.bind(this);
+
 
   submitNote(event, _id){
     event.preventDefault();
+    if (!this.state.text || this.state.text.length < 1){
+      alert("You didn't type a note about this hero!")
+      return
+    }
     let note = { content: this.state.text }
     $.ajax({
       url: `/api/superheroes/note/${_id}`,
       method: "POST",
       data: note
-    }).done((response)=> this.loadHeroes())
+    }).done((response)=> {
+      this.setState({text: undefined})
+      this.loadHeroes()
+      })
   }
 
   render() {
@@ -46,7 +56,8 @@ class HeroesContainer extends Component {
           {this.state.heroes
             ? <HeroList heroes={this.state.heroes}
                         updateText={this.updateText}
-                        submitNote={this.submitNote} />
+                        submitNote={this.submitNote}
+                        text={this.state.text}/>
             : undefined}
         </div>
       </div>
