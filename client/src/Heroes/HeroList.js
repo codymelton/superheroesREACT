@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router';
 import NotesList from './NotesList'
 
-const HeroList = props => (
+const HeroList = (props, context) => (
   <div>
     <h1>The Hero is...</h1>
     {props.heroes.map((item, index) => (
@@ -38,5 +38,7 @@ const HeroList = props => (
     ))}
   </div>
 );
+
+
 
 export default HeroList;

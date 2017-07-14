@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './NavBarr';
 import { Link } from 'react-router'
+import GetUser from './context/GetUser'
 
 class App extends Component {
   render() {
@@ -19,7 +20,9 @@ class App extends Component {
           </div>
         </nav>
         <div className="container my-main-container">
-          {this.props.children}
+          <GetUser>
+            {this.props.children}
+          </GetUser>
         </div>
       </div>
     )

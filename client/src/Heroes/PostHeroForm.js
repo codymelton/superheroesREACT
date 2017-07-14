@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostHeroForm = (props) => (
+const PostHeroForm = (props, context) => (
   <div>
     <form onSubmit={(event) => props.handleSubmit(event)}>
       <h3>Post a New Super Hero</h3>
@@ -14,5 +14,9 @@ const PostHeroForm = (props) => (
     </form>
   </div>
 )
+
+PostHeroForm.contextTypes={
+  loadUserFromServer: React.PropTypes.func
+}
 
 export default PostHeroForm;

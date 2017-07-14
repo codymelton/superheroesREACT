@@ -11,6 +11,7 @@ class HeroesContainer extends Component {
   state = {
     heroes: undefined,
     text: undefined,
+
   };
 
 // BIND all component
@@ -52,6 +53,7 @@ class HeroesContainer extends Component {
   render() {
     return (
       <div className="">
+      <h1>{this.context.greeting}</h1>
         <div className="">
           {this.state.heroes
             ? <HeroList heroes={this.state.heroes}
@@ -63,6 +65,10 @@ class HeroesContainer extends Component {
       </div>
     );
   }
+}
+
+HeroesContainer.contextTypes={
+  greeting: React.PropTypes.string
 }
 
 export default HeroesContainer;
